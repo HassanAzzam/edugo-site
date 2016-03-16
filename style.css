@@ -1,0 +1,248 @@
+body{
+	margin: 0;
+	overflow-x: hidden;
+}
+*{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100 !important;
+	z-index: inherit;
+}
+*::-webkit-scrollbar{
+	width:0;
+}
+@media only screen and (max-width: 768px){
+		*{
+			font-size: 36px;			
+		}
+		#comm,#perform,#time{
+			height: 100%;
+		}
+	}
+	@media only screen and (min-width: 769px){
+		*{
+			font-size: 64px;
+		}
+		#comm,#perform,#time{
+			height: 85%;
+		}
+	}
+button{
+	border:0;
+}
+button:focus{
+	outline:0;
+}
+div#bar{
+	position: fixed;
+	display: inline-block;
+	min-height: 85px;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	color: #fff;
+}
+div#bar button{
+	background-color: rgba(0,0,0,0.1);
+	height: 48px;
+	color: inherit;
+	font-size: initial;
+	border-radius: 0.5em;
+	margin-top: 4vh;
+	margin-right: 0.7em;
+	float: left;
+	font-size: 0.25em;
+}
+div#bar button:hover{
+	transition: background-color 0.2s;
+	background-color: #006BE6;
+}
+div#header{
+	background-color: #07f;
+	height: 65%;
+	color: #fff;
+	z-index:1;
+}
+div#header h1{
+	font-size: 2em;
+	margin-top: 120px;
+	margin-bottom: 0%;
+	font-weight: 500 !important;
+}
+div#header p{
+	margin-top: 3%;
+	margin-bottom: 15%;
+	font-size: 0.3em;
+}
+div#header img{
+	float: right;
+	z-index: 1;
+	animation: idle 3s linear infinite;
+}
+@keyframes idle{
+	50%{ margin-top: -0.3em; }
+	100%{ margin-top: 0; }
+}
+
+#popup{
+	width:100vw;
+	height:100vh;
+	position: fixed;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 3;
+	display: none;
+}
+#popup > div{
+	width:70%;
+	height:80%;
+	position: relative;
+	margin:auto;
+	top:50%;
+	transform: translateY(-50%);
+	background-color: #fff;
+	padding: 5%;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+	border-radius: 3px;
+}
+#popup span{
+	font-size: 0.3em;
+}
+#popup span:nth-of-type(1)::after{
+	content:'We are on a quest to re-define the education and learning to empower a better generation to build a better tomorrow.';
+	font-weight: 500 !important;
+}
+#popup span:nth-of-type(2){
+	font-size: 0.2em;
+	color: #888;
+}
+#popup button{
+	width: 40%;
+	float:left;
+	height: 15%;
+	position: absolute;
+	bottom: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 0.4em;
+	background-color: transparent;
+	color: #07f;
+}
+#popup a{
+	font-size: 1em;
+}
+.askew {
+    bottom: 0%;
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    left: 0;
+    transform-origin: left bottom;
+    transform: rotateZ(5deg);
+    background-color: inherit;
+    z-index: inherit;
+    border-bottom: 1px solid #cfcfcf;
+}
+.askew.right{
+    transform-origin: right bottom;
+    transform: rotateZ(-5deg);
+    left: initial;
+    right:0;
+}
+div#comm, #time{
+	background-color: #eee;
+	padding-top: 35vh;
+}
+#comm img{
+	padding:0;
+}
+#cir, #cir2{
+	padding: 0;
+	display: block;
+	background: url('assets/disconnected.svg') no-repeat;
+	background-size: 100%;
+	overflow: visible;
+}
+#cir2{
+	position: absolute;
+	top:0;
+	left:0;
+	background-image: url('assets/connected.svg');
+	display: none;
+}
+@keyframes load{
+	0%{padding-bottom: 0}
+	100%{padding-bottom: 120%}
+}
+#cir:after,#cir2:after {
+  content: "";
+  display: block;
+  padding-bottom: 120%;
+}
+#cir2:after{
+  animation: load 1s;
+}
+.title{
+	font-size: 1em;
+	color: #333;
+}
+.subtitle{
+	font-size: 0.35em;
+	color: #666;
+}
+div#perform{
+	z-index: -1;
+	background-color: #fff;
+	padding-top: 30vh;
+}
+
+.pie-chart > span::after{
+		content: '%';
+		font-size: 0.6em;
+	}
+	.pie-chart{
+	  background-color: #07f;
+	  border-radius: 100%;
+	  background-image: linear-gradient(-90deg, transparent 50%, #eee 50%),
+	  linear-gradient(-90deg, #eee 50%, transparent 50%);
+	  border: 2px solid #fff;
+	  position: relative;
+	  padding-left: 0 !important;
+	  padding-right: 0 !important; 
+	  top: 0em;
+	}
+	.pie-chart:after{
+		content: '';
+		display: block;
+	padding-bottom: 100%;
+}
+	.pie-chart span{
+	  background-color:#fff;
+	  border-radius: 100%;
+	  width: 90% !important;
+	  height: 90%;
+	  position: absolute;
+	  top: 50%;
+	  left:50%;
+	  transform: translate(-50%,-50%);
+	  color: #07f;
+	  font-size:1.1em;
+	display:-ms-flexbox;
+	-ms-flex-pack:center;
+	-ms-flex-align:center;
+	display:-moz-box;
+	-moz-box-pack:center;
+	-moz-box-align:center;
+	display:-webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	display:box;
+	box-pack:center;
+	box-align:center;
+	}
+#time{
+	z-index: -2;
+}
+#p1{
+	transition: transform 0.5s linear;
+}
+#p2{
+}
