@@ -15,5 +15,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function handleEvent(svg,deg) {
     return function(e) {
         svg.getElementById('circs').style.transform="rotate("+deg+"deg)"; 
+        var pics = svg.querySelectorAll('.pic');
+        for(var i=0;i<pics.length;i++) {
+			pics[i].style.transform="rotate("+(deg*-1)+"deg)";
+			pics[i].style.transformOrigin='center';
+			pics[i].style.transition= "transform 1s ease";
+		}
     };
 }
