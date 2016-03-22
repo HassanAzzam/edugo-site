@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		var cirs = svg.querySelectorAll('.why-cir');
 		var arr=[120,25,312,200];
 		for(var i=0;i<cirs.length;i++) {
-			cirs[i].addEventListener("click",handleEvent(svg,arr[i%4],values[i%4]));
+			cirs[i].addEventListener("click",handleEvent(svg,(document.body.clientWidth<768)? ((arr[i%4]+90)%360):arr[i%4],values[i%4],i%4));
 		}
     });
 	window.onscroll=function(){
@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
     
 });
-function handleEvent(svg,deg,value) {
+function handleEvent(svg,deg,value,ind) {
     return function(e) {
+    	var cirs = svg.querySelectorAll('.why-cir');
     	document.querySelectorAll('.values')[1].innerHTML = value;
         svg.getElementById('circs').style.transform="rotate("+deg+"deg)"; 
         var pics = svg.querySelectorAll('.pic');
@@ -32,6 +33,8 @@ function handleEvent(svg,deg,value) {
 			pics[i].style.transform="rotate("+(deg*-1)+"deg)";
 			pics[i].style.transformOrigin='center';
 			pics[i].style.transition= "transform 1s ease";
+			cirs[i].style.fill= "#06e";
 		}
+		cirs[ind].style.fill="#08f";
     };
 }
