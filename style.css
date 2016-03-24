@@ -20,6 +20,15 @@ body{
 		div.values{
 			height: 20%;
 		}
+		#header{
+			background-position: 55% 70%;
+			background-repeat: no-repeat;
+			background-size: 130%;
+		}
+		#packages{
+			padding-left: 10%;
+			padding-right: 10%;
+		}
 	}
 	@media only screen and (min-width: 769px){
 		*{
@@ -27,6 +36,18 @@ body{
 		}
 		div.values{
 			height: 30%;
+		}
+		#header img{
+			margin: -10%;
+		}
+		#header{
+			background-position: 180% 90%;
+			background-repeat: no-repeat;
+			background-size: 90%;
+		}
+		#packages{
+			padding-left: 15%;
+			padding-right: 15%;
 		}
 	}
 button{
@@ -47,7 +68,7 @@ div#bar{
 	color: #fff;
 }
 div#bar button{
-	background-color: #18f;
+	background-color: #29f;
 	height: 48px;
 	color: inherit;
 	font-size: initial;
@@ -65,24 +86,22 @@ div#bar button:hover{
 	background-color: #07f;
 	height: 100vh;
 	color: #fff;
-	z-index:1;
+	padding-top: 50px;
+	background-image: url(assets/mockups.png);
+	
 }
 #header h1{
 	font-size: 2em;
-	margin-top: 120px;
 	margin-bottom: 0%;
 	font-weight: 500 !important;
+	padding-top: 5%;
 }
 #header p{
 	margin-top: 3%;
 	margin-bottom: 15%;
 	font-size: 0.3em;
 }
-#header img{
-	float: right;
-	z-index: 1;
-}
-#popup{
+.popup{
 	width:100vw;
 	height:100vh;
 	position: fixed;
@@ -92,7 +111,7 @@ div#bar button:hover{
 	top:0;
 	left:0;
 }
-#popup > div{
+.popup > div{
 	width:70%;
 	height:80%;
 	position: relative;
@@ -100,25 +119,37 @@ div#bar button:hover{
 	top:50%;
 	transform: translateY(-50%);
 	background-color: #fff;
-	padding: 5%;
+	padding: 3%;
 	box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
 	border-radius: 3px;
 }
-#popup *{
+.popup input{
+	width:50%;
+}
+.popup textarea{
+	width:70%;
+	height:40% !important;
+	resize: none;
+}
+.popup input, .popup textarea{
+	font-size: 0.27em;
+	margin: 2%;
+}
+.popup *{
 	font-weight: 300 !important;
 }
-#popup span{
+.popup span{
 	font-size: 0.3em;
 }
-#popup span:nth-of-type(1)::after{
+.popup span:nth-of-type(1)::after{
 	content:'We are on a quest to re-define the education and learning to empower a better generation to build a better tomorrow.';
 	font-weight: 500 !important;
 }
-#popup span:nth-of-type(2){
+.popup span:nth-of-type(2){
 	font-size: 0.2em;
 	color: #888;
 }
-#popup button{
+.popup button{
 	width: 40%;
 	float:left;
 	height: 15%;
@@ -131,7 +162,7 @@ div#bar button:hover{
 	color: #07f;
 	box-shadow: none;
 }
-#popup a{
+.popup a{
 	font-size: 1em;
 }
 .askew {
@@ -153,7 +184,7 @@ div#bar button:hover{
     right:0;
 }
 #why{
-	background-color: #06e;
+	background-color: #288CFF;
 	height:100vh;
 }
 .core{
@@ -193,22 +224,20 @@ div.values span{
 	color: #666;
 }
 #packages{
-	height:100%;
-	padding-left: 20%;
-	padding-right: 20%;
+	min-height:100%;
 	background-color: #05d;
 }
 
 #packages .hdr{
 	padding: 0;
-	width:10%; 
+	width:50px;
 	background-color: inherit;
 	font-weight: 500 !important;
 	box-pack:center;
 	-webkit-box-pack:center;
 	-ms-flex-pack:center;
 	-moz-box-pack:center;
-	font-size: 0.3em;
+	font-size: 0.2em;
 	color: #fff;
 	margin: 0.5%;
 }
@@ -217,6 +246,7 @@ div.values span{
 	border-radius: 5px;
 	font-size: 0.4em;
 	margin-top: 5vh;
+	margin-bottom: 5vh;
 	height: 10%;
 	padding: 1% !important;
 	color: #fff;
@@ -224,16 +254,15 @@ div.values span{
 #packages span{
 	font-size: 0.3em;
 	padding-left: 5%;
-	width: 66%;
+	width: calc(100% - 300px - 24px);
 	box-sizing: border-box;
 	color: #fff;
 	font-weight: 300 !important;
 	float:left;
 	background-color: #18f;
 	border-radius: 5px;
-	max-height: 8%;
 	height: 53px;
-	margin: 0.5%;
+	margin: 3px;
 	display:-ms-flexbox;
 	-ms-flex-align:center;
 	display:-moz-box;
@@ -248,12 +277,9 @@ div.values span{
 	-webkit-box-pack:center;
 	-ms-flex-pack:center;
 	-moz-box-pack:center;
-	width:10%;
+	width:50px;
 	text-align: center;
 	padding-left: 0;
-}
-#packages span.custom{
-	background-color: #D8C32F;
 }
 #packages span.yes{
 	background-color: #17d65d;
@@ -261,14 +287,24 @@ div.values span{
 #packages span.no{
 	background-color: #e71212;
 }
+#packages span.custom{
+	float: right;
+	width: 200px;
+	height: calc(424px + 45px);
+	max-height: initial;
+	padding: 2%;
+}
 #footer{
-	padding-top: 4%;
-	height: 30%;
+	display: inline-block;
+	width: 100%;
 	background-color: #04c;
 	position: relative;
 }
+#footer a{
+	margin-top: 4%;
+	margin-bottom: 4%;
+}
 #footer span{
-	position: absolute;
 	bottom: 0;
 	left: 0;
 	float: left;	
@@ -291,7 +327,8 @@ div.values span{
 	-moz-box-pack:center;
 }
 #footer span a{
-	font-size: 1em;
+	font-weight: 500 !important;
+	font-size: 1.3em;
 	color: #ccc;
 }
 
