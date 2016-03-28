@@ -1,4 +1,3 @@
-<?php
-  mail("hassanazzam95@email.com", "Form to email message", "message", "From: gamersman2007@yahoo.com");
-
+<?php 
+mail("hassanazzam95@gmail.com", "Hello", "message", "gamersman2007@yahoo.com"); 
 ?>

@@ -21,7 +21,7 @@ body{
 			height: 20%;
 		}
 		#header{
-			background-position: 55% 70%;
+			background-position: 55% 80%;
 			background-repeat: no-repeat;
 			background-size: 130%;
 		}
@@ -37,17 +37,17 @@ body{
 		div.values{
 			height: 30%;
 		}
-		#header img{
-			margin: -10%;
-		}
 		#header{
 			background-position: 180% 90%;
 			background-repeat: no-repeat;
 			background-size: 90%;
 		}
 		#packages{
-			padding-left: 15%;
-			padding-right: 15%;
+			padding-left: 16%;
+			padding-right: 16%;
+		}
+		#bar button{
+			width: 12.5% !important;
 		}
 	}
 button{
@@ -94,7 +94,6 @@ div#bar button:hover{
 	font-size: 2em;
 	margin-bottom: 0%;
 	font-weight: 500 !important;
-	padding-top: 5%;
 }
 #header p{
 	margin-top: 3%;
@@ -246,7 +245,6 @@ div.values span{
 	border-radius: 5px;
 	font-size: 0.4em;
 	margin-top: 5vh;
-	margin-bottom: 5vh;
 	height: 10%;
 	padding: 1% !important;
 	color: #fff;
@@ -254,7 +252,7 @@ div.values span{
 #packages span{
 	font-size: 0.3em;
 	padding-left: 5%;
-	width: calc(100% - 300px - 24px);
+	width: calc(80% - 100px - 24px);
 	box-sizing: border-box;
 	color: #fff;
 	font-weight: 300 !important;
@@ -289,7 +287,7 @@ div.values span{
 }
 #packages span.custom{
 	float: right;
-	width: 200px;
+	width: 20%;
 	height: calc(424px + 45px);
 	max-height: initial;
 	padding: 2%;
@@ -375,3 +373,14 @@ div.values span{
 .icon-report:before{content:'\0048';}
 .icon-schedule:before{content:'\0049';}
 .icon-novelty:before{content:'\004a';}
+
+@keyframes rot{
+	0%{ transform: rotateZ(25deg); }
+	20%{ transform: rotateZ(25deg); }
+	30%{ transform: rotateZ(120deg); }
+	45%{ transform: rotateZ(120deg); }
+	55%{ transform: rotateZ(200deg); }
+	70%{ transform: rotateZ(200deg); }
+	80%{ transform: rotateZ(312deg); }
+	95%{ transform: rotateZ(312deg); }
+}

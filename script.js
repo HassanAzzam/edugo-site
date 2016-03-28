@@ -3,7 +3,8 @@ var values = ['<div><span class="icon-updated"></span><span>Real-time updates</s
 '<div><span class="icon-schedule"></span><span>Schedules and reminders</span></div><div><span class="icon-novelty"></span><span>Novelty</span></div>',
 '<div><span class="icon-time"></span><span>Time saving</span></div>'
 ];
-
+var clicked = 0;
+var index = 1;
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var svg;
 	document.getElementById('svgObj').addEventListener("load",function(){
@@ -13,8 +14,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		svg.getElementById('circs').style.transition= "transform 1s ease";
 		var cirs = svg.querySelectorAll('.why-cir');
 		var arr=[120,25,312,200];
+		function animate(){
+			setTimeout(function(){
+				if(clicked) return;
+				handleEvent(svg,(document.body.clientWidth<768)? ((arr[index%4]+90)%360):arr[index%4],values[index%4],index%4,0)();
+				index--;
+				if(index==-1) index=3;
+				if(!clicked) animate();
+			},5000);
+		}
+		animate();
 		for(var i=0;i<cirs.length;i++) {
-			cirs[i].addEventListener("click",handleEvent(svg,(document.body.clientWidth<768)? ((arr[i%4]+90)%360):arr[i%4],values[i%4],i%4));
+			cirs[i].addEventListener("click",handleEvent(svg,(document.body.clientWidth<768)? ((arr[i%4]+90)%360):arr[i%4],values[i%4],i%4,1));
 		}
     });
 	window.onscroll=function(){
@@ -23,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
     
 });
-function handleEvent(svg,deg,value,ind) {
-    return function(e) {
+function handleEvent(svg,deg,value,ind,clk) {
+    return function() {
+		clicked = (clicked||clk);
     	var cirs = svg.querySelectorAll('.why-cir');
     	document.querySelectorAll('.values')[1].innerHTML = value;
         svg.getElementById('circs').style.transform="rotate("+deg+"deg)"; 
@@ -37,4 +49,7 @@ function handleEvent(svg,deg,value,ind) {
 		}
 		cirs[ind].style.fill="#08f";
     };
+}
+function mail(){
+	window.open("mailto:hassanazzam95@gmail.com");
 }
