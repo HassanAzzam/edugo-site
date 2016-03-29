@@ -125,6 +125,7 @@ div#bar button:hover{
 	width:70%;
 	height:40% !important;
 	resize: none;
+	float: left;
 }
 .popup input, .popup textarea{
 	font-size: 0.27em;
@@ -297,6 +298,15 @@ div.values span{
 	left: 1.8%;
 	transform: translateY(-50%);
 	color: #05d;
+}
+form label{
+	font-size: 0.25em;
+	float: left;
+}
+input[type="radio"]{
+	width: 8%;
+	float: left;
+	margin: 2%;
 }
 #footer{
 	display: inline-block;

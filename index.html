@@ -52,7 +52,7 @@
 			<span><i class="material-icons">phonelink</i>Available as both Mobile & Web Solutions</span><span class="no"></span><span class="yes"></span>
 			</div>
 			<button class="col-xs-12 col-sm-4 col-sm-offset-1" onclick="document.getElementById('demo').style.display = 'block'">Request a demo</button>
-			<button class="col-xs-12 col-sm-4 col-sm-offset-1" onclick="document.getElementById('demo').style.display = 'block'">Choose a plan</button>
+			<button class="col-xs-12 col-sm-4 col-sm-offset-2" onclick="enablePlans();document.getElementById('demo').style.display = 'block'">Choose a plan</button>
 	</section>
 	<section id="footer">
 		<a class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-4" href="https://play.google.com/store/apps/developer?id=Yackeen+Solutions&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" style="width:100%" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" /></a>
@@ -61,13 +61,16 @@
 			Copyright © 2016 <a href="http://yackeensolutions.com/" target="_blank">Yackeen Solutions</a>™, All Rights Reserved.
 		</span>
 	</section>
-	<div id="demo" class="popup" onclick="document.getElementById('demo').style.display='none'">
+	<div id="demo" class="popup" onclick="disablePlans();document.getElementById('demo').style.display='none'">
 		<div onclick="event.stopPropagation()">
-			<form name="demo_form">
+			<form name="demo_form" action="mailto:support@yackeensolutions.com">
 			<input name="name" type="text" class="form-control" placeholder="Name" required="true">
 			<input name="email" type="email" class="form-control" placeholder="E-mail" required="true">
 			<input name="title" type="text" class="form-control" placeholder="Title" required="true">
 			<input name="org" type="text" class="form-control" placeholder="Organization" required="true">
+			<input type="radio" name="plan" value="Basic" disabled><label>Basic</label>
+  			<input type="radio" name="plan" value="Premium" disabled checked><label>Premium</label>
+  			<input type="radio" name="plan" value="Custom" disabled><label>Custom</label>
 			<textarea name="comm" class="form-control" placeholder="Comments"></textarea>
 			<button type="submit">SUBMIT</button>
 			</form>

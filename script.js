@@ -53,3 +53,12 @@ function handleEvent(svg,deg,value,ind,clk) {
 function mail(){
 	window.open("mailto:hassanazzam95@gmail.com");
 }
+function enablePlans(){
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=false;
+}
+function disablePlans(){
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=true;
+		r[1].checked=true;
+}
