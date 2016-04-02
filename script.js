@@ -3,6 +3,7 @@ var values = ['<div><span class="icon-updated"></span><span>Real-time updates</s
 '<div><span class="icon-schedule"></span><span>Schedules and reminders</span></div><div><span class="icon-novelty"></span><span>Novelty</span></div>',
 '<div><span class="icon-time"></span><span>Time saving</span></div>'
 ];
+
 var clicked = 0;
 var index = 1;
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -28,10 +29,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			cirs[i].addEventListener("click",handleEvent(svg,(document.body.clientWidth<768)? ((arr[i%4]+90)%360):arr[i%4],values[i%4],i%4,1));
 		}
     });
-	window.onscroll=function(){
-		if(document.body.scrollTop>=document.body.clientHeight*.75)
-			document.querySelector('.values').style.display="block";
-	};
     
 });
 function handleEvent(svg,deg,value,ind,clk) {
@@ -51,14 +48,23 @@ function handleEvent(svg,deg,value,ind,clk) {
     };
 }
 function mail(){
-	window.open("mailto:hassanazzam95@gmail.com");
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=false;
+	document.getElementById('demo').style.display='none';
 }
 function enablePlans(){
+	document.getElementsByName('isdemo')[0].value=0;
 	var r = document.querySelectorAll('input[type="radio"]');
 	for(var i=0;i<3;i++) r[i].disabled=false;
 }
 function disablePlans(){
+	document.getElementsByName('isdemo')[0].value=1;
 	var r = document.querySelectorAll('input[type="radio"]');
 	for(var i=0;i<3;i++) r[i].disabled=true;
 		r[1].checked=true;
+}
+function openDemo(e){
+	disablePlans();
+	if(e.innerText=="Choose a plan") enablePlans();
+	document.getElementById('demo').style.display='block';
 }
