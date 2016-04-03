@@ -1,40 +1,70 @@
-var visited=[false,false,false];
+var values = ['<div><span class="icon-updated"></span><span>Real-time updates</span></div><div><span class="icon-finger"></span><span>Info at your fingertips</span></div>',
+'<div><span class="icon-report"></span><span>Performance reporting</span></div><div><span class="icon-branding"></span><span>Branding</span></div>',
+'<div><span class="icon-schedule"></span><span>Schedules and reminders</span></div><div><span class="icon-novelty"></span><span>Novelty</span></div>',
+'<div><span class="icon-time"></span><span>Time saving</span></div>'
+];
+
+var clicked = 0;
+var index = 1;
 document.addEventListener("DOMContentLoaded", function(event) { 
-	window.onscroll = function(){
-		//50% : 
-		var scrolled = document.body.scrollTop;
-		if(scrolled>=document.body.clientHeight*0.5&&!visited[0])
-		{
-			visited[0]=true;
-			document.getElementById('cir2').style.display = 'block';
+	var svg;
+	document.getElementById('svgObj').addEventListener("load",function(){
+    	svg = this.contentDocument.querySelector('svg');
+		svg.style.width = '100%';
+		svg.getElementById('circs').style.transformOrigin= "357px 428.5px 0px";
+		svg.getElementById('circs').style.transition= "transform 1s ease";
+		var cirs = svg.querySelectorAll('.why-cir');
+		var arr=[120,25,312,200];
+		function animate(){
 			setTimeout(function(){
-				document.getElementById('cir2').style.position = 'relative';
-				document.getElementById('cir').style.display = 'none';
-			},1000);
+				if(clicked) return;
+				handleEvent(svg,(document.body.clientWidth<768)? ((arr[index%4]+90)%360):arr[index%4],values[index%4],index%4,0)();
+				index--;
+				if(index==-1) index=3;
+				if(!clicked) animate();
+			},5000);
 		}
-		if(scrolled>=document.body.clientHeight*1.25&&!visited[1])
-		{
-			visited[1]=true;
-			animatePercentage();
+		animate();
+		for(var i=0;i<cirs.length;i++) {
+			cirs[i].addEventListener("click",handleEvent(svg,(document.body.clientWidth<768)? ((arr[i%4]+90)%360):arr[i%4],values[i%4],i%4,1));
 		}
-		if(scrolled>=document.body.clientHeight*2.25&&!visited[2])
-		{
-			visited[2]=true;
-			document.getElementById('p1').style.transform = 'translateY(100%)';
-		}
-	}
+    });
+    
 });
-function pieStyle(val){
-	var s1 = 'none';
-	var s2 = 'linear-gradient('+(90+(val%50)*360/100)+'deg, transparent 50%, #eee 50%),linear-gradient(90deg, #eee 50%, transparent 50%)';
-	var s3 = 'linear-gradient('+(90+(val%50)*360/100)+'deg, transparent 50%, #07f 50%),linear-gradient(90deg, #eee 50%, transparent 50%)';
-	if(val==100) return s1;
-	if(val<50) return s2;
-	return s3;
+function handleEvent(svg,deg,value,ind,clk) {
+    return function() {
+		clicked = (clicked||clk);
+    	var cirs = svg.querySelectorAll('.why-cir');
+    	document.querySelectorAll('.values')[1].innerHTML = value;
+        svg.getElementById('circs').style.transform="rotate("+deg+"deg)"; 
+        var pics = svg.querySelectorAll('.pic');
+        for(var i=0;i<pics.length;i++) {
+			pics[i].style.transform="rotate("+(deg*-1)+"deg)";
+			pics[i].style.transformOrigin='center';
+			pics[i].style.transition= "transform 1s ease";
+			cirs[i].style.fill= "#06e";
+		}
+		cirs[ind].style.fill="#08f";
+    };
 }
-var i=0;
-function animatePercentage(){
-	document.querySelector('.pie-chart').style.backgroundImage=pieStyle(i);
-	document.querySelector('.pie-chart span').innerHTML = i++;
-	if(i<91)setTimeout(animatePercentage,7);
+function mail(){
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=false;
+	document.getElementById('demo').style.display='none';
+}
+function enablePlans(){
+	document.getElementsByName('isdemo')[0].value=0;
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=false;
+}
+function disablePlans(){
+	document.getElementsByName('isdemo')[0].value=1;
+	var r = document.querySelectorAll('input[type="radio"]');
+	for(var i=0;i<3;i++) r[i].disabled=true;
+		r[1].checked=true;
+}
+function openDemo(e){
+	disablePlans();
+	if(e.innerText=="Choose a plan") enablePlans();
+	document.getElementById('demo').style.display='block';
 }
